@@ -8,7 +8,7 @@
 // General settings
 #define SKETCH_NAME "Temp&Wilg"
 #define SKETCH_VERSION "1.02"
-#define MY_NODE_ID 1
+#define MY_NODE_ID 25
 
 // NRF24 radio settings
 #define MY_RF24_CE_PIN 8
