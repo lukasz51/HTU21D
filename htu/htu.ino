@@ -1,4 +1,3 @@
-
 #ifdef F_CPU
 #undef F_CPU
 #define F_CPU 1000000L
@@ -7,13 +6,13 @@
 
 // General settings
 #define SKETCH_NAME "Temp&Wilg"
-#define SKETCH_VERSION "1.02"
+#define SKETCH_VERSION "1.1"
 #define MY_NODE_ID 25
 
 // NRF24 radio settings
 #define MY_RF24_CE_PIN 8
 #define MY_RF24_CS_PIN 9
-#define MY_RADIO_NRF24
+#define MY_RADIO_RF24
 //#define MY_RF24_ENABLE_ENCRYPTION
 //#define MY_RF24_CHANNEL 125
 //#define MY_RF24_PA_LEVEL RF24_PA_HIGH
@@ -33,9 +32,6 @@
 */
 
 #define NODEMANAGER_SLEEP ON
-#define NODEMANAGER_CONDITIONAL_REPORT ON
-
-
 
 
 // import NodeManager library (a nodeManager object will be then made available)
@@ -63,35 +59,34 @@ void before() {
 * Configure your sensors
 */
 
-	// set reporting interval for all the sensors to 1 minute
-	nodeManager.setReportIntervalMinutes(5);
-	// set sleep interval to 1 minute
-	nodeManager.setSleepMinutes(5);
-  battery.setReportIntervalMinutes(240);
+  // set reporting interval for all the sensors to 10 minute
+  nodeManager.setReportIntervalMinutes(10);
+  // set sleep interval to 10 minute
+  nodeManager.setSleepMinutes(10);
+  battery.setReportIntervalMinutes(60);
 
-  htu21.children.get(1)->setForceUpdateTimerValue(30);
   battery.setMinVoltage(2.1);
   battery.setMaxVoltage(2.6);
   
 
-	// call NodeManager before routine
-	nodeManager.before();
+  // call NodeManager before routine
+  nodeManager.before();
 }
 
 // presentation
 void presentation() {
-	// call NodeManager presentation routine
-	nodeManager.presentation();
+  // call NodeManager presentation routine
+  nodeManager.presentation();
 }
 
 // setup
 void setup() {
-	// call NodeManager setup routine
-	nodeManager.setup();
+  // call NodeManager setup routine
+  nodeManager.setup();
 }
 
 // loop
 void loop() {
-	// call NodeManager loop routine
-	nodeManager.loop();
+  // call NodeManager loop routine
+  nodeManager.loop();
 }
